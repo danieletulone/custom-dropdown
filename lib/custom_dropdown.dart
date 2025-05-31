@@ -170,6 +170,9 @@ class CustomDropdown<T> extends StatefulWidget {
   /// The [multiSelectController] that can be used to control [CustomDropdown.multiSelect] selected items.
   final MultiSelectController<T>? multiSelectController;
 
+  /// Whether to automatically focus the search field when the dropdown opens.
+  final bool autofocus;
+
   /// Callback for dropdown [visibility].
   ///
   /// If both [visibility] and [overlayController] are provided, this callback never listens the changes of [overlayController].
@@ -207,6 +210,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.excludeSelected = true,
     this.enabled = true,
     this.disabledDecoration,
+    this.autofocus = false,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -267,6 +271,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
+    this.autofocus = false,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -326,6 +331,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
+    this.autofocus = false,
   })  : assert(
           initialItem == null || controller == null,
           'Only one of initialItem or controller can be specified at a time',
@@ -365,6 +371,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.listItemPadding,
     this.enabled = true,
     this.disabledDecoration,
+    this.autofocus = false,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -427,6 +434,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
+    this.autofocus = false,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -488,6 +496,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.enabled = true,
     this.disabledDecoration,
     this.closeDropDownOnClearFilterSearch = false,
+    this.autofocus = false,
   })  : assert(
           initialItems == null || multiSelectController == null,
           'Only one of initialItems or controller can be specified at a time',
@@ -673,6 +682,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                   searchRequestLoadingIndicator:
                       widget.searchRequestLoadingIndicator,
                   dropdownType: widget._dropdownType,
+                  autofocus: widget.autofocus,
                 );
               },
               child: (showCallback) {

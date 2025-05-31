@@ -9,6 +9,7 @@ class _SearchField<T> extends StatefulWidget {
   final Duration? futureRequestDelay;
   final ValueChanged<bool>? onFutureRequestLoading, mayFoundResult;
   final SearchFieldDecoration? decoration;
+  final bool autofocus;
 
   const _SearchField.forListData({
     super.key,
@@ -16,6 +17,7 @@ class _SearchField<T> extends StatefulWidget {
     required this.onSearchedItems,
     required this.searchHintText,
     required this.decoration,
+    this.autofocus = false,
   })  : searchType = _SearchType.onListData,
         futureRequest = null,
         futureRequestDelay = null,
@@ -32,6 +34,7 @@ class _SearchField<T> extends StatefulWidget {
     required this.onFutureRequestLoading,
     required this.mayFoundResult,
     required this.decoration,
+    this.autofocus = false,
   }) : searchType = _SearchType.onRequestData;
 
   @override
@@ -47,8 +50,9 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
   @override
   void initState() {
     super.initState();
-    if (widget.searchType == _SearchType.onRequestData &&
-        widget.items.isEmpty) {
+    if ((widget.searchType == _SearchType.onRequestData &&
+            widget.items.isEmpty) ||
+        widget.autofocus) {
       focusNode.requestFocus();
     }
   }
@@ -102,6 +106,7 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(
         focusNode: focusNode,
+        autofocus: widget.autofocus,
         style: widget.decoration?.textStyle,
         onChanged: (val) async {
           if (val.isEmpty) {

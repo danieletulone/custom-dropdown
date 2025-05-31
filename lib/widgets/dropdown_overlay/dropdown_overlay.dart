@@ -38,6 +38,7 @@ class _DropdownOverlay<T> extends StatefulWidget {
   final _NoResultFoundBuilder? noResultFoundBuilder;
   final CustomDropdownDecoration? decoration;
   final _DropdownType dropdownType;
+  final bool autofocus;
 
   const _DropdownOverlay({
     Key? key,
@@ -75,6 +76,7 @@ class _DropdownOverlay<T> extends StatefulWidget {
     required this.listItemBuilder,
     required this.headerListBuilder,
     required this.noResultFoundBuilder,
+    this.autofocus = false,
   });
 
   @override
@@ -400,6 +402,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                     },
                                     decoration:
                                         decoration?.searchFieldDecoration,
+                                    autofocus: widget.autofocus,
                                   )
                                 else
                                   GestureDetector(
@@ -429,6 +432,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                               },
                                               decoration: decoration
                                                   ?.searchFieldDecoration,
+                                              autofocus: widget.autofocus,
                                             ),
                                           ),
                                           decoration?.expandedSuffixIcon ??
@@ -460,6 +464,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                         mayFoundSearchRequestResult = val,
                                     decoration:
                                         decoration?.searchFieldDecoration,
+                                    autofocus: widget.autofocus,
                                   )
                                 else
                                   GestureDetector(
@@ -502,6 +507,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
                                                       val,
                                               decoration: decoration
                                                   ?.searchFieldDecoration,
+                                              autofocus: widget.autofocus,
                                             ),
                                           ),
                                           decoration?.expandedSuffixIcon ??

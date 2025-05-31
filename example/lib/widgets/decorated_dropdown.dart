@@ -11,6 +11,7 @@ class DecoratedDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomDropdown<Job>.search(
+      autofocus: true,
       items: jobItems,
       initialItem: jobItems[2],
       hintText: 'Select job role',
