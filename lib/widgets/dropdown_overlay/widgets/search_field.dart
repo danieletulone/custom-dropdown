@@ -50,9 +50,8 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
   @override
   void initState() {
     super.initState();
-    if ((widget.searchType == _SearchType.onRequestData &&
-            widget.items.isEmpty) ||
-        widget.autofocus) {
+    if (widget.autofocus || 
+        (widget.searchType == _SearchType.onRequestData && widget.items.isEmpty)) {
       focusNode.requestFocus();
     }
   }
